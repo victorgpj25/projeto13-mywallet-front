@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "./style/globalStyles.js";
+import WalletContext from "./context/WalletContext";
 import Login from "./components/Login.js";
 import Cadastro from "./components/Cadastro.js";
+import Carteira from "./components/Carteira.js";
+import NovaEntrada from "./components/NovaEntrada.js";
+import NovaSaida from "./components/NovaSaida.js";
 
 
 
@@ -12,17 +15,13 @@ export default function App () {
 
     const [config, setConfig ] = useState({headers: {Authorization: `Bearer ${localStorage.getItem("config")}`}} || "")
 
-    const [ emailLogin, setEmailLogin ] = useState("")
-    const [ senhaLogin, setSenhaLogin ] = useState("")
-
-    const [ profileName ,setProfileName ] = useState(localStorage.getItem("profileName") || "")
+    const [ profileName, setProfileName ] = useState(localStorage.getItem("profileName") || "")
 
     const [ loading, setLoading ] = useState(false)
-    const navigate = useNavigate()
 
 
     return (
-        <UserContext.Provider value={{emailLogin, setEmailLogin, senhaLogin, setSenhaLogin, profileName, setProfileName, config, setConfig, loading, setLoading}}>
+        <WalletContext.Provider value={{ profileName, setProfileName, config, setConfig, loading, setLoading}}>
                 <GlobalStyle />
                 <Routes>
                     <Route path="/" element={<Login />} />
@@ -31,6 +30,6 @@ export default function App () {
                     <Route path="/nova-entrada" element={<NovaEntrada />} />
                     <Route path="/nova-saida" element={<NovaSaida />} />
                 </Routes>
-        </UserContext.Provider>
+        </WalletContext.Provider>
     )
 }

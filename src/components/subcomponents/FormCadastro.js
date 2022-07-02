@@ -4,12 +4,12 @@ import styled from "styled-components";
 import axios from "axios";
 import { useContext } from "react";
 
-import UserContext from "../../contexts/UserContext";
+import WalletContext from "../../context/WalletContext.js";
 import { ThreeDots } from  "react-loader-spinner";
 
 export default function FormCadastro () {
 
-    const { loading, setLoading } = useContext(UserContext)
+    const { loading, setLoading } = useContext(WalletContext)
     const [ nomeCadastro, setNomeCadastro] = useState("")
     const [ emailCadastro, setEmailCadastro] = useState("")
     const [ senhaCadastro, setSenhaCadastro] = useState("")
@@ -27,10 +27,10 @@ export default function FormCadastro () {
         const body = {
             name: nomeCadastro,
             email: emailCadastro,
-            password: senhaCadastro
+            password: senhaCadastro,
         }
 
-        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", body)
+        const promise = axios.post("", body)
 
         promise.then( res => {
             setLoading(false)
@@ -67,7 +67,7 @@ const Container = styled.div`
     form input {
         width: 100%;
         height: 58px;
-        margin: 2% 0 2% 0;
+        margin: 4% 0 4% 0;
         padding: 0 0 0 15px;
         display: flex;
         align-items: center;

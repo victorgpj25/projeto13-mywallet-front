@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ThreeDots } from  "react-loader-spinner";
-import UserContext from "../../contexts/UserContext";
+import WalletContext from "../../context/WalletContext.js";
 
 export default function FormLogin () {
 
-    const {emailLogin, setEmailLogin, senhaLogin, setSenhaLogin, setProfileName, setConfig, loading, setLoading} = useContext(UserContext)
+    const {setProfileName, setConfig, loading, setLoading} = useContext(WalletContext)
     const navigate = useNavigate()
+
+    const [ emailLogin, setEmailLogin ] = useState("")
+    const [ senhaLogin, setSenhaLogin ] = useState("")
 
 
     useEffect(() => { 
@@ -26,7 +29,7 @@ export default function FormLogin () {
             password: senhaLogin
         }
 
-        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body)
+        const promise = axios.post("", body)
 
         promise.then( resposta => {
             localStorage.setItem("profileName", resposta.data.name)
@@ -64,7 +67,7 @@ const Container = styled.div`
     form input {
         width: 100%;
         height: 58px;
-        margin: 2% 0 2% 0;
+        margin: 4% 0 4% 0;
         padding: 0 0 0 15px;
         display: flex;
         align-items: center;

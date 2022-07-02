@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 import FormCadastro from  "./subcomponents/FormCadastro.js";
-import Logo from "../image/mywallet.png";
+import Logo from "../content/mywallet.png";
 
 export default function Cadastro () {
     return (
