@@ -30,7 +30,7 @@ export default function FormCadastro () {
             password: senhaCadastro,
         }
 
-        const promise = axios.post("", body)
+        const promise = axios.post("https://git.heroku.com/victorgpj-mywallet-back.git/cadastro", body)
 
         promise.then( res => {
             setLoading(false)
