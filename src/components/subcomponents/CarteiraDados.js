@@ -20,7 +20,6 @@ export default function CarteiraDados () {
 
         promise.then( resposta => {
             setCarteiraDados(resposta.data)
-            calcularSaldo()
             setLoading(false)
         })
         promise.catch( err => {
@@ -28,6 +27,10 @@ export default function CarteiraDados () {
             setLoading(false)
         })
 	}, []);
+
+    useEffect(() => { 
+        calcularSaldo()
+	}, [carteiraDados]);
 
     function calcularSaldo () {
         let aux = 0
