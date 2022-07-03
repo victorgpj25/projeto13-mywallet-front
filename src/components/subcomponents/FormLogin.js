@@ -29,7 +29,7 @@ export default function FormLogin () {
             password: senhaLogin
         }
 
-        const promise = axios.post("https://git.heroku.com/victorgpj-mywallet-back.git/login", body)
+        const promise = axios.post("https://victorgpj-mywallet-back.herokuapp.com/login", body)
 
         promise.then( resposta => {
             localStorage.setItem("profileName", resposta.data.name)

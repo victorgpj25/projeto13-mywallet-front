@@ -29,7 +29,7 @@ export default function CarteiraDados () {
                 state: true
             }
     
-            const promise = axios.post("https://git.heroku.com/victorgpj-mywallet-back.git/carteiraDados", body, config)
+            const promise = axios.post("https://victorgpj-mywallet-back.herokuapp.com/carteiraDados", body, config)
     
             promise.then( res => {
                 setLoading(false)

@@ -16,7 +16,7 @@ export default function CarteiraDados () {
     useEffect(() => { 
         setLoading(true)
 
-        const promise = axios.get("https://git.heroku.com/victorgpj-mywallet-back.git/carteiraDados", config)
+        const promise = axios.get("https://victorgpj-mywallet-back.herokuapp.com/carteiraDados", config)
 
         promise.then( resposta => {
             setCarteiraDados(resposta.data)
